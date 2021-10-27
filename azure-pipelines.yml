@@ -6,7 +6,7 @@ variables:
   releaseBranchName: 'release'
 
 schedules:
-- cron: '22 10 * * *'
+- cron: '25 10 * * *'
   displayName: 'Deploy every day at 3 A.M.'
   branches:
     include:
@@ -16,7 +16,6 @@ schedules:
 stages:
 - stage: 'Test'
   displayName: 'Deploy to the test environment'
-  dependsOn: Dev
   condition: eq(variables['Build.Reason'], 'Schedule')
   jobs:
   - deployment: Deploy
@@ -39,6 +38,7 @@ stages:
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 - stage: 'Build'
   displayName: 'Build the web application'
+  dependsOn: Test
   jobs: 
   - job: 'Build'
     displayName: 'Build job'
