@@ -4,7 +4,6 @@ trigger:
 variables:
   buildConfiguration: 'Release'
 
-  - job: RunLoadTests
     displayName: 'Run load tests'
     pool:
       vmImage: 'ubuntu-20.04'
