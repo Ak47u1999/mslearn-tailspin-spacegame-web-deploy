@@ -1,6 +1,9 @@
 trigger:
 - '*'
 
+variables:
+  buildConfiguration: 'Release'
+
   - job: RunLoadTests
     displayName: 'Run load tests'
     pool:
